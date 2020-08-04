@@ -28,8 +28,16 @@ public final class PropertyCopier {
     // Prevent Instantiation of Static Class
   }
 
+  /**
+   * 属性复制类
+   *
+   * @param type
+   * @param sourceBean
+   * @param destinationBean
+   */
   public static void copyBeanProperties(Class<?> type, Object sourceBean, Object destinationBean) {
     Class<?> parent = type;
+    // 循环复制类，从当前类开始直到父类不存在
     while (parent != null) {
       final Field[] fields = parent.getDeclaredFields();
       for (Field field : fields) {
