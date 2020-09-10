@@ -27,6 +27,7 @@ import org.apache.ibatis.reflection.invoker.MethodInvoker;
 import org.apache.ibatis.reflection.property.PropertyTokenizer;
 
 /**
+ * 类的元数据
  * @author Clinton Begin
  */
 public class MetaClass {
@@ -54,9 +55,11 @@ public class MetaClass {
   }
 
   public String findProperty(String name, boolean useCamelCaseMapping) {
+    //下划线转驼峰
     if (useCamelCaseMapping) {
       name = name.replace("_", "");
     }
+    //获得属性
     return findProperty(name);
   }
 
@@ -169,6 +172,7 @@ public class MetaClass {
   }
 
   private StringBuilder buildProperty(String name, StringBuilder builder) {
+    //创建
     PropertyTokenizer prop = new PropertyTokenizer(name);
     if (prop.hasNext()) {
       String propertyName = reflector.findPropertyName(prop.getName());
